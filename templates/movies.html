@@ -1,0 +1,66 @@
+{% load static %}
+{% static "movies" as baseUrl %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src='main.js'></script>
+    <style>
+       
+        body {
+            text-align: center;
+          font-family: Arial, Helvetica, sans-serif;
+          background-color:#12b1d582;
+        }
+        a {
+            color:#fb0202,;
+            text-decoration:underline;
+            cursor:pointer;
+        }
+        h6{
+            color:blue;
+            position: absolute;
+            top: 20px;
+            right: 16px;
+            font-size: 18px;
+          
+        }
+    </style>
+
+</head>
+<body>
+    <h5>user uploads</h5>
+    {% if images %}
+        {% for image in images %}
+            <!-- <img src="{{ MEDIA_URL }}UserUploads/{{ image }}" alt="{{ image }}"> -->
+            <img src="/media/UserUploads/{{image}}" width="100" height="100"/>
+        {% endfor %}
+        {% else %}
+        <p>No image available.</p>
+    {% endif %}
+</body>
+</html>
+    <!-- <p><h2>Movies </h2></p><br><br>
+    <div class="container horizontal-scrollable"> 
+        <div class="row text-center">
+            {% for movie,image in mylist%}
+            <div class="col-xs-4">
+                <a href="{{movie.location.url}}">
+                <img src="/media/coverpics/{{image}}" width="100" height="100"/>
+                <h4>{{movie.name}}</h4>
+                </a><h6>{{movie.desc}}</h6>
+        </div>
+        {%endfor%}
+        
+        </div> 
+    </div>  -->
+
+
+<!-- <h4>{{movie.name}} {{movie.desc}}</h4>width="100" height="100"
+<video width='400' controls>
+    <source src="{{movie.location.url}}" type='video/mp4'>
+</video> -->

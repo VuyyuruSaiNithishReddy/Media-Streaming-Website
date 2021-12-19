@@ -1,0 +1,32 @@
+install python
+install environmental package
+install Django
+update pip
+using pip install pillow
+for database connectivity:
+postgres - "psycopg2"
+"pip install pandas"
+for sklearn use
+-"pip install -U scikit-learn scipy matplotlib"
+"conda activate base" for datascience
+for running for the project use cmd in vscode or in windows
+dont use powershell or python terminal
+
+local host : http://127.0.0.1:8000/
+django admin : http://127.0.0.1:8000/admin
+postgres direct app
+
+media files / coverpics are in media folder outside
+before running the file need to put arrange them
+
+less app secure access:
+https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4P044d9KVMlw6yqHZHWQi7LOY-rdFsiq6LhmOkDayh6QY2H79RuZ__c6LHoMB7zNXi5LRwSc8UBpAgZsWkvOJpP7-sBFg
+
+
+Notes:
+insatll juypter , add the python path to the vscode
+extensions for vsc:
+anaconda extension pack
+jinja
+juypter
+juypter keymap 

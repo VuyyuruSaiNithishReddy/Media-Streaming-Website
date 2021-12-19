@@ -1,0 +1,50 @@
+{% load static %}
+{% static "movies" as baseUrl %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTT Platform by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+</head>
+<body class="subpage">
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="#">OTT PLATFORM <span>by batch 2</span></a></h1>
+        <h4><a href="{% url 'logout'%}">logout</a></h4>
+    </header>
+
+    <div id="main">
+        <!-- One -->
+            <section class="wrapper style1">
+                <div class="inner">
+                    <header class="align-center">
+                        <h2>Suggested Movies</h2>
+                        <p>(based on your search)</p>
+                    </header>
+                    {% for name,links in mlinks%}
+                        <div class="video">
+                            <div class="video-wrapper">
+                                <iframe width="560" height="315" src="{{ links }}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p class="caption">
+                                {{ name }}
+                            </p>
+                        </div>
+                    {%endfor%}
+                    
+                </div>
+            </section>
+    </div>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+            
+
+</html>

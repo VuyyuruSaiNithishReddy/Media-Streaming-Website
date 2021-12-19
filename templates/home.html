@@ -1,0 +1,126 @@
+{% load static %}
+{% static "movies" as baseUrl %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTT Platform by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    <style>
+        input, .btn {
+          text-align: left;
+          width: 25%;
+          padding: 12px;
+          border: none;
+          border-radius: 50px;
+          margin: 5px 0;
+          opacity: 0.85;
+          display: inline-block;
+          font-size: 17px;
+          line-height: 20px;
+        }
+
+    </style>
+</head>
+    <body>
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="#">OTT PLATFORM <span>by NITHISH</span></a></h1>
+        <h4><a href="{% url 'logout'%}">logout</a></h4>
+    </header>
+    
+
+    <!-- Banner -->
+    <!-- To use a video as your background, set data-video to the name of your video without
+        its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+        formats to work correctly.-->
+    <section id="banner" data-video="images/banner">
+        <div class="inner">
+            <header>
+                <h1>OTT PLATFORM</h1>
+                <p>an online movie streaming platform</p>
+                {% if user.is_authenticated %}
+                <h4>Hello,{{user.first_name}} </h4>
+                {%endif%}
+            </header>
+            <!-- <a href="#main" class="button big alt scrolly">Dignissim</a> -->
+        </div>
+        <video autoplay="" loop=""><source src="{%static 'images/banner.mp4'%}" type="video/mp4">
+                                    <source src="{%static 'images/banner.webm'%}" type="video/webm">
+        </video>
+
+    </section>
+
+    <section class="wrapper ">
+        <div class="inner">
+            <header class="align-center">
+                <h2>Movies</h2>
+                <p>list of movies</p>
+            </header>
+            <form action="recommendation" method="POST">
+                {%csrf_token%}
+            <input type="text" name="moviename"  placeholder="text" value="Avatar" size="20">
+            <input type="submit" value="search similar movies">
+            </form>
+            <form action="dblist" method="POST">
+                {%csrf_token%}
+            <input type="submit" value="View List">
+            </form>
+
+            <div class="flex flex-4">                   
+                
+                {% for movie,image in mylist%}
+                
+                <div class="video col">
+                    <div class="image fit">
+                        <img src="{{movie.cover_pic.url}}" alt="" />
+                        <div class="arrow">
+                            <div class="icon fa-play"></div>
+                        </div>
+                    </div>
+                    <div>
+                    <p class="caption">
+                        <a href="{{movie.location.url}}" class="link"><span>Click Me</span></a>
+                        {{movie.name}}<br>
+                        {{movie.desc}}
+                    </p>
+                    </div>                        
+                </div>            
+                {%endfor%}
+            </div>
+            <form action="moviereq" method="POST">
+                {%csrf_token%}
+            <input type="text" name="mname" placeholder="Request A Movie" value="" size="20"><br>
+            <input type="submit" value="request a movie">
+            </form>
+        </div>
+    </section>
+
+            
+    <!-- OLD CODE
+    <h1>welcome to Home Page</h1>
+    {% if user.is_authenticated %}
+        
+        <p><h2>Movies </h2></p><br><br>
+        
+        {% for movie,image in mylist%}
+            <a href="{{movie.location.url}}">
+            <img src="/media/coverpics/{{image}}" width="100" height="100"/>
+            <h4>{{movie.name}}</h4>
+            </a><h5>{{movie.desc}}</h5><br>
+    
+        {%endfor%}
+    {%endif%} -->
+    
+    <!-- Scripts -->
+    
+    
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/jquery.scrolly.min.js'%}"></script>
+    <script src="{%static 'js/skel.min.js'%}"></script>
+    <script src="{%static 'js/util.js'%}"></script>
+    <script src="{%static 'js/main.js'%}"></script>
+</body>
+
+</html>
